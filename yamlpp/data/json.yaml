@@ -1,0 +1,19 @@
+# Comments!
+{
+  firstName: Kim,   # No Quotes!
+  lastName:  Smith,
+  age:       99,
+  old:       true,
+  weight:    null,
+  address: {
+    street:      21 Jump Street,
+    city:        New York,
+    postalCode: "10021",
+  },
+  phoneNumber: [
+    {
+      type:   home,
+      number: 212 555-1234,
+    },
+  ], # Trailing Commas!
+}

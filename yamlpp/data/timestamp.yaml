@@ -1,0 +1,5 @@
+---
+# implicit
+start: 2018-08-16 10:40:00
+# explicit
+end: !!timestamp 2018-08-16 11:00:00

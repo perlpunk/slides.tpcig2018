@@ -1,0 +1,4 @@
+---
+- !Dice [3, 6]
+# BUT:
+- !nonsense...classname [foo]

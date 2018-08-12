@@ -1,0 +1,14 @@
+---
+dice: !ruby/Object:Dice [3, 6]
+
+---
+# YAML::XS, YAML.pm, YAML::Syck
+dice: !!perl/array:Dice [3, 6]
+
+---
+# YAML.pm, YAML::Syck
+dice: !perl/array:Dice [3, 6]
+
+---
+# Pyyaml
+dice: !!python/object:__main__.Dice [3, 6]

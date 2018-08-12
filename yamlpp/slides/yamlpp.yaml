@@ -1,0 +1,350 @@
+---
+title: YAML::PP - Just another YAML™ Module?
+content: |
+  [title][/title]
+  [list]
+  [*]Where: The Perl Conference in Glasgow
+  [*]When: August 16th 2018
+  [*]Who: Tina Müller
+  [/list]
+
+---
+title: Perl YAML Modules
+content: |
+  [title][/title]
+  [list animation="1,appear"]
+  [*]YAML.pm
+  [*]YAML::Syck
+  [*]YAML::XS
+  [*]YAML::Tiny
+  [*]Do we need another one? Absolutely:
+  [*]YAML::PP
+  [/list]
+
+---
+title: Working on YAML.pm
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]End of 2016 I was working on YAML.pm a bit
+  [*]At the same time, the YAML Test Suite, created by Ingy, was growing
+  [*]I wanted to find out if I can write a parser
+  [*]Fixing YAML.pm was not an option
+  [*]I wanted it to work completely different
+  [/list]
+
+---
+title: Compare Formats
+content: |
+  [title][/title]
+  [codebox animation="1,appear"][comment]YAML[/comment]
+
+  [include="1.yaml.html"]
+
+  [/codebox]
+  [codebox animation="2,appear"][comment]JSON (and YAML)[/comment]
+
+  [include="1.json.html"]
+
+  [/codebox]
+  [codebox animation="3,appear"][comment]YAML (Flow Style)[/comment]
+  [include="json.yaml.html"]
+
+  [/codebox]
+
+---
+title: Highlighting
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]The highlighting on the previous slide was done by YAML::PP
+  [*]For doing that, it needs to work different than the existing parsers
+  [*]So how does it work?
+  [/list]
+
+---
+title: YAML::PP Lexer
+content: |
+  [title][/title]
+  [list]
+  [*]The Lexer turns the input into Tokens
+  [*]This is debugging output of the tokens:
+  [/list]
+  [codebox][include="yamlpp-trace.ansi.html"][/codebox]
+
+---
+title: YAML::PP Grammar
+content: |
+  [title][/title]
+  [list]
+  [*]The Tokens are passed to a bottom-up Grammar:
+  [/list]
+  [codebox][include="yamlpp-grammar.ansi.html"][/codebox]
+
+---
+title: Loading Process
+content: |
+  [title][/title]
+  [horizontal][codebox][comment]# YAML[/comment]
+  [span animation='1,greyin']---[/span]
+  [span animation='2,greyin']key a: [/span][span animation="3,greyin"]1[/span]
+  [span animation='4,greyin']key b: [/span]
+  [span animation="5,greyin"]- item 1[/span]
+  [span animation="6,greyin"]- item 2[/span]
+  [/codebox][codebox]parse ->[/codebox][codebox][comment]Events[/comment]
+  [span]1. stream-start[/span]
+  [span animation="1,appear"]2. document-start[/span]
+  [span animation="2,appear"]3. mapping-start[/span]
+  [span animation="2,appear"]4. scalar 'key a'[/span]
+  [span animation="3,appear"]5. scalar '1'[/span]
+  [span animation="4,appear"]6. scalar 'key b'[/span]
+  [span animation="5,appear"]7. sequence-start[/span]
+  [span animation="5,appear"]8. scalar 'item 1'[/span]
+  [span animation="6,appear"]9. scalar 'item 2'[/span]
+  [span animation="7,appear"]10. sequence-end[/span]
+  [span animation="8,appear"]11. mapping-end[/span]
+  [span animation="9,appear"]12. document-end[/span]
+  [span animation="10,appear"]13. stream-end[/span]
+  [/codebox][codebox]construct ->[/codebox][codebox][comment]# Perl[/comment]
+  [span animation="1,appear"]$document = [/span][span animation="2,appear"]{
+      'key a' => [/span][span animation="3,appear"]1,[/span]
+  [span animation="4,appear"]    'key b' => [/span][span animation="5,appear"][
+          'item 1',[/span]
+  [span animation="6,appear"]        'item 2',[/span]
+  [span animation="7,appear"]    ],[/span]
+  [span animation="8,appear"]}[/span][span animation="9,appear"];[/span]
+  [/codebox][/horizontal]
+
+---
+title: Testing
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]Dividing the loading process into these steps also makes it easier to test
+  [*]The parsing can be tested language independently
+  [*]Many other processors use the event based loading (yaml-cpp, Haskell HsYaml, Java SnakeYAML, libyaml, NimYAML, YAML::Pegex, YAML::PP, Python PyYAML and ruamel)
+  [/list]
+
+---
+title: The YAML Test Suite
+content: |
+  [title][/title]
+  [url=http://matrix.yaml.io/sheet/valid.html]All test cases[/url]
+  [br]
+  [codebox]YAML
+  [include="229Q.yaml.html"][/codebox]
+  [codebox]JSON
+  [include="229Q.json.html"][/codebox]
+  [codebox]Events
+  [include="229Q.events"][/codebox]
+
+---
+title: Tokens and Events
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]Currently the tokens are just a plain list
+  [*]At some point they will be associated with the corresponding event
+  [*]This will make it possible to keep formatting & comments in roundtrips
+  [/list]
+
+
+---
+title: Aliases
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]Another feature YAML has to offer are aliases/anchors
+  [*]If you feed the Dumper data with the same reference used multiple times
+  [*]it will only be serialized once and loaded back as a reference
+  [*]It even supports cyclic references
+  [*]This can lead to memory leaks when loading untrusted YAML
+  [*]YAML::PP supports disabling cyclic refs
+  [/list]
+
+---
+title: YAML Tags and Perl objects
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]YAML can serialize objects
+  [/list]
+
+---
+title: Generic Object Tags
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]Most YAML processors implement generic Tags for Object serialization
+  [/list]
+  [codebox animation="5,appear"][include="generic-objects.yaml.html"][/codebox]
+
+---
+title: Local Tags
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]Tags with one ! are called local tags
+  [*]In Perl Loaders, they are loaded into classes also
+  [/list]
+  [codebox animation="5,appear"][include="local-objects.yaml.html"][/codebox]
+
+---
+title: YAML Local Tags in Perl
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]which results in this:
+  [/list]
+  [codebox animation="5,appear"][include="local.yaml.html"]
+  
+  
+  
+  [/codebox]
+  [codebox animation="6,appear"][include="local.pl"][/codebox]
+  [br]
+  [list animation="10,greyin"]
+  [*]Since YAML::XS 0.69 and YAML.pm 1.25 you can disable blessing objects
+  [*]But you can only disable it or enable all tags
+  [/list]
+
+
+---
+title: Wishlist
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]I want to allow only certain tags
+  [*]I want to specify code to instantiate the object (instead of a simple 'bless')
+  [*]I want to match strings with Regular Expressions and create objects
+  [*]The last feature is already supported by YAML::PP
+  [*]PyYAML supports all of these
+  [*]I also started working a bit on PyYAML, which is also good for perl, because...
+  [*]I can steal its features
+  [*]I can avoid its mistakes
+  [/list]
+
+
+---
+title: Loading Timestamps as Objects
+content: |
+  [title][/title]
+  [codebox animation="5,appear"][include="timestamp.pl"][/codebox]
+  [codebox animation="6,appear"][include="timestamp.yaml.html"]
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  [/codebox]
+
+---
+title: Loading Roman Numbers as Integers
+content: |
+  [title][/title]
+  [codebox animation="5,appear"][include="roman.pl"][/codebox]
+
+---
+title: External Vars, Templating
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]You could also use this feature to replace placeholders with external variables
+  [*]You will find an [url=https://metacpan.org/source/TINITA/YAML-PP-0.007/examples/external-vars-templates]example[/url] of this in the YAML::PP distribution
+  [/list]
+
+
+---
+title: YAML 1.1 vs. 1.2
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]YAML.pm and YAML::Syck were written for YAML 1.0
+  [*]YAML::XS is based on libyaml, for YAML 1.1
+  [*]YAML::PP targets YAML 1.2
+  [*]What are the differences?
+  [/list]
+
+---
+title: YAML 1.1 vs. 1.2 Syntax
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]Syntactically, YAML 1.2 is more or less backwards compatible with 1.1
+  [*]So YAML::PP should be able to parse 1.1 documents
+  [/list]
+
+---
+title: YAML 1.1 vs. 1.2 Schema
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]The way things like booleans, numbers and other things are resolved in 1.1/1.2, is quite different
+  [*]I wrote an article on that: [url=http://blogs.perl.org/users/tinita/2018/01/introduction-to-yaml-schemas-and-tags.html]Introduction to YAML Schemas and Tags[/url]
+  [/list]
+
+---
+title: YAML 1.1 vs. 1.2 Schema Examples
+content: |
+  [title][/title]
+  [codebox animation="5,appear"][include="schema1.1.yaml.html"][/codebox]
+  [codebox animation="6,appear"][include="schema1.2-core.yaml.html"][/codebox]
+  [codebox animation="7,appear"][include="schema1.2-json.yaml.html"][/codebox]
+
+---
+title: YAML::PP and YAML 1.1?
+content: |
+  [title][/title]
+  [list animation="1,greyin"]
+  [*]YAML::PP implements all three 1.2 Schemas (Failsafe, JSON and Core)
+  [*]Because the implementation is generic, it is flexible enough to add 1.1 support
+  [*]This will hopefully be one of my next steps
+  [*]As a general recommendation, I'd only use 'true', 'false', 'null'
+  [/list]
+
+---
+title: YAML and Booleans
+content: |
+  [title][/title]
+
+  [codebox animation="5,flyin"][include="boolean-yaml.pl"][/codebox]
+  [br]
+  [codebox animation="6,flyin"][include="boolean-yaml-syck.pl"][/codebox]
+  [br]
+  [codebox animation="7,flyin"][include="boolean-yaml-xs.pl"][/codebox]
+  [br]
+  [codebox animation="8,flyin"][include="boolean-yaml-pp.pl"][/codebox]
+
+---
+title: YAML Test Matrix
+content: |
+  [title][/title]
+  [url=http://matrix.yaml.io/]http://matrix.yaml.io/[/url]
+  [br]
+  [h1][img=yaml-test-matrix.png]YAML Test Matrix![/img][/h1]
+
+---
+title: Links
+content: |
+  [title][/title]
+  [list]
+  [*]Official YAML website [url=http://yaml.org/]http://yaml.org/[/url]
+  [*]Test Suite [url=https://github.com/yaml/yaml-test-suite]https://github.com/yaml/yaml-test-suite[/url]
+  [*]YAML Editor [url=https://github.com/yaml/yaml-editor]https://github.com/yaml/yaml-editor[/url]
+  [*]Test Matrix Website [url=http://matrix.yaml.io/]http://matrix.yaml.io/[/url]
+  [*]Test Matrix github [url=https://github.com/perlpunk/yaml-test-matrix]https://github.com/perlpunk/yaml-test-matrix[/url]
+  [*]YAML::PP [url=https://metacpan.org/pod/YAML::PP]https://metacpan.org/pod/YAML::PP[/url]
+  [/list]
+

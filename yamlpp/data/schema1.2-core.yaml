@@ -1,0 +1,21 @@
+# YAML 1.2 Core
+---
+truth:
+- true
+- True
+- TRUE
+
+null values:
+- ~
+- null
+- Null
+- NULL
+- # empty
+
+
+
+
+
+
+
+

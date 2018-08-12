@@ -1,0 +1,21 @@
+# YAML 1.1
+---
+truth:
+- y
+- Y
+- yes
+- Yes
+- YES
+- true
+- True
+- TRUE
+- on
+- On
+- ON
+
+null values:
+- ~
+- null
+- Null
+- NULL
+- # empty

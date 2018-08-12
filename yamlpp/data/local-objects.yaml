@@ -1,0 +1,5 @@
+---
+- !Dice [3, 6]
+
+# YAML::XS, YAML::Syck
+# bless ( [ 3, 6 ], 'Dice' )
