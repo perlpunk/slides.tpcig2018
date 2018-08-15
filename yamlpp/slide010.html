@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>The YAML Test Suite</title>
+<link rel="prev" href="slide009.html" />
+<link rel="next" href="slide011.html" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bbslides.js"></script>
+<script src="js/navi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slides.css">
+<link rel="stylesheet" type="text/css" href="css/ansicolor.css">
+<link rel="stylesheet" type="text/css" href="css/yaml.css">
+</head>
+
+<body>
+<!--
+<div id="test"></div>
+-->
+<div id="bbslides-slide" class="bbslides-frame">
+<h1 id="node_1" class="bbslides-h1">The YAML Test Suite</h1>
+<a href="http://matrix.yaml.io/sheet/valid.html" rel="nofollow">All test cases</a>
+<br>
+<div id="node_4" class="codebox">YAML
+<span class="dash">-</span><span class="eol">
+</span><span class="indent">  </span><span class="default">name</span><span class="colon">:</span><span class="default"> </span><span class="default">Mark McGwire</span><span class="eol">
+</span><span class="indent">  </span><span class="default">hr</span><span class="colon">:</span><span class="default">   </span><span class="default">65</span><span class="eol">
+</span><span class="indent">  </span><span class="default">avg</span><span class="colon">:</span><span class="default">  </span><span class="default">0.278</span><span class="eol">
+</span><span class="dash">-</span><span class="eol">
+</span><span class="indent">  </span><span class="default">name</span><span class="colon">:</span><span class="default"> </span><span class="default">Sammy Sosa</span><span class="eol">
+</span><span class="indent">  </span><span class="default">hr</span><span class="colon">:</span><span class="default">   </span><span class="default">63</span><span class="eol">
+</span><span class="indent">  </span><span class="default">avg</span><span class="colon">:</span><span class="default">  </span><span class="default">0.288</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span>
+</div>
+<div id="node_6" class="codebox">JSON
+<span class="flowseq_start">[</span><span class="eol">
+</span><span class="indent">  </span><span class="flowmap_start">{</span><span class="eol">
+</span><span class="indent">    </span><span class="doublequote">&quot;</span><span class="doublequoted">name</span><span class="doublequote">&quot;</span><span class="colon">:</span><span class="default"> </span><span class="doublequote">&quot;</span><span class="doublequoted">Mark McGwire</span><span class="doublequote">&quot;</span><span class="flow_comma">,</span><span class="eol">
+</span><span class="indent">    </span><span class="doublequote">&quot;</span><span class="doublequoted">hr</span><span class="doublequote">&quot;</span><span class="colon">:</span><span class="default"> </span><span class="default">65</span><span class="flow_comma">,</span><span class="eol">
+</span><span class="indent">    </span><span class="doublequote">&quot;</span><span class="doublequoted">avg</span><span class="doublequote">&quot;</span><span class="colon">:</span><span class="default"> </span><span class="default">0.278</span><span class="eol">
+</span><span class="indent">  </span><span class="flowmap_end">}</span><span class="flow_comma">,</span><span class="eol">
+</span><span class="indent">  </span><span class="flowmap_start">{</span><span class="eol">
+</span><span class="indent">    </span><span class="doublequote">&quot;</span><span class="doublequoted">name</span><span class="doublequote">&quot;</span><span class="colon">:</span><span class="default"> </span><span class="doublequote">&quot;</span><span class="doublequoted">Sammy Sosa</span><span class="doublequote">&quot;</span><span class="flow_comma">,</span><span class="eol">
+</span><span class="indent">    </span><span class="doublequote">&quot;</span><span class="doublequoted">hr</span><span class="doublequote">&quot;</span><span class="colon">:</span><span class="default"> </span><span class="default">63</span><span class="flow_comma">,</span><span class="eol">
+</span><span class="indent">    </span><span class="doublequote">&quot;</span><span class="doublequoted">avg</span><span class="doublequote">&quot;</span><span class="colon">:</span><span class="default"> </span><span class="default">0.288</span><span class="eol">
+</span><span class="indent">  </span><span class="flowmap_end">}</span><span class="eol">
+</span><span class="flowseq_end">]</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span><span class="eol">
+</span>
+</div>
+<div id="node_8" class="codebox">Events
++STR
++DOC
++SEQ
++MAP
+=VAL :name
+=VAL :Mark McGwire
+=VAL :hr
+=VAL :65
+=VAL :avg
+=VAL :0.278
+-MAP
++MAP
+=VAL :name
+=VAL :Sammy Sosa
+=VAL :hr
+=VAL :63
+=VAL :avg
+=VAL :0.288
+-MAP
+-SEQ
+-DOC
+-STR
+</div>
+</div>
+<script type="text/javascript">
+
+var prev_page = 'slide009.html';
+var next_page = 'slide011.html';
+</script>
+<div id="bbslides-navi">
+Slide 10/28
+<a href="slide009.html" onclick="previous_step();return false">BACK</a>
+<a href="index.html">UP</a>
+<a href="slide011.html" onclick="next_step(); return false">NEXT</a>
+<span id="usage">next: ( space / -&gt; / page up ) | previous: ( backspace / &lt;- / page down ) |
+next page: ( shift + page down ) | previous page: ( shift + page up ) |
+index: ( arrow-up )</span>
+
+<br>
+<progress id="slide-progress" value="10" max="28"></progress>
+</div>
+</body>
+</html>

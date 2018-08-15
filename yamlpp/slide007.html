@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>YAML::PP Grammar</title>
+<link rel="prev" href="slide006.html" />
+<link rel="next" href="slide008.html" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bbslides.js"></script>
+<script src="js/navi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slides.css">
+<link rel="stylesheet" type="text/css" href="css/ansicolor.css">
+<link rel="stylesheet" type="text/css" href="css/yaml.css">
+</head>
+
+<body>
+<!--
+<div id="test"></div>
+-->
+<div id="bbslides-slide" class="bbslides-frame">
+<h1 id="node_1" class="bbslides-h1">YAML::PP Grammar</h1>
+<ul><li id="node_3">The Tokens are passed to a bottom-up Grammar:</li></ul>
+<div id="node_4" class="codebox"><span class="indent">  </span><span class="default">PLAIN</span><span class="colon">:</span><span class="comment">
+</span><span class="indent">    </span><span class="default">match</span><span class="colon">:</span><span class="default"> </span><span class="default">cb_start_plain</span><span class="comment">          # &lt;--- Callback</span><span class="comment">
+</span><span class="indent">    </span><span class="default">COMMENT</span><span class="colon">:</span><span class="comment">
+</span><span class="indent">      </span><span class="default">match</span><span class="colon">:</span><span class="default"> </span><span class="default">cb_send_scalar</span><span class="comment">        # &lt;--- Callback</span><span class="comment">
+</span><span class="indent">      </span><span class="default">EOL</span><span class="colon">:</span><span class="default"> </span><span class="flowmap_start">{</span><span class="default"> </span><span class="default">return</span><span class="colon">:</span><span class="default"> </span><span class="default">1</span><span class="default"> </span><span class="flowmap_end">}</span><span class="comment">
+</span><span class="indent">    </span><span class="default">EOL</span><span class="colon">:</span><span class="comment">
+</span><span class="indent">      </span><span class="default">match</span><span class="colon">:</span><span class="default"> </span><span class="default">cb_fetch_tokens_plain</span><span class="comment"> # &lt;--- Callback</span><span class="comment">
+</span><span class="indent">      </span><span class="default">new</span><span class="colon">:</span><span class="default"> </span><span class="default">RULE_PLAIN_MULTI</span><span class="comment">
+</span><span class="indent">    </span><span class="default">WS</span><span class="colon">:</span><span class="comment">
+</span><span class="indent">      </span><span class="default">COLON</span><span class="colon">:</span><span class="comment">
+</span><span class="indent">        </span><span class="default">match</span><span class="colon">:</span><span class="default"> </span><span class="default">cb_insert_map</span><span class="comment">       # &lt;--- Callback</span><span class="comment">
+</span><span class="indent">        </span><span class="default">EOL</span><span class="colon">:</span><span class="default"> </span><span class="flowmap_start">{</span><span class="default"> </span><span class="default">node</span><span class="colon">:</span><span class="default"> </span><span class="default">FULLNODE</span><span class="default"> </span><span class="flow_comma">,</span><span class="default"> </span><span class="default">return</span><span class="colon">:</span><span class="default"> </span><span class="default">1</span><span class="flowmap_end">}</span><span class="comment">
+</span><span class="indent">        </span><span class="default">WS</span><span class="colon">:</span><span class="default"> </span><span class="flowmap_start">{</span><span class="default"> </span><span class="default">node</span><span class="colon">:</span><span class="default"> </span><span class="default">FULLMAPVALUE_INLINE</span><span class="flow_comma">,</span><span class="default"> </span><span class="default">return</span><span class="colon">:</span><span class="default"> </span><span class="default">1</span><span class="default"> </span><span class="flowmap_end">}</span><span class="comment">
+</span><span class="indent">    </span><span class="default">COLON</span><span class="colon">:</span><span class="comment">
+</span><span class="indent">      </span><span class="default">match</span><span class="colon">:</span><span class="default"> </span><span class="default">cb_insert_map</span><span class="comment">         # &lt;--- Callback</span><span class="comment">
+</span><span class="indent">      </span><span class="default">EOL</span><span class="colon">:</span><span class="default"> </span><span class="flowmap_start">{</span><span class="default"> </span><span class="default">node</span><span class="colon">:</span><span class="default"> </span><span class="default">FULLNODE</span><span class="default"> </span><span class="flow_comma">,</span><span class="default"> </span><span class="default">return</span><span class="colon">:</span><span class="default"> </span><span class="default">1</span><span class="flowmap_end">}</span><span class="comment">
+</span><span class="indent">      </span><span class="default">WS</span><span class="colon">:</span><span class="default"> </span><span class="flowmap_start">{</span><span class="default"> </span><span class="default">node</span><span class="colon">:</span><span class="default"> </span><span class="default">FULLMAPVALUE_INLINE</span><span class="flow_comma">,</span><span class="default"> </span><span class="default">return</span><span class="colon">:</span><span class="default"> </span><span class="default">1</span><span class="default"> </span><span class="flowmap_end">}</span><span class="comment">
+</span><span class="comment">
+</span><span class="indent">  </span><span class="default">COLON</span><span class="colon">:</span><span class="comment">
+</span>
+</div>
+</div>
+<script type="text/javascript">
+
+var prev_page = 'slide006.html';
+var next_page = 'slide008.html';
+</script>
+<div id="bbslides-navi">
+Slide 7/28
+<a href="slide006.html" onclick="previous_step();return false">BACK</a>
+<a href="index.html">UP</a>
+<a href="slide008.html" onclick="next_step(); return false">NEXT</a>
+<span id="usage">next: ( space / -&gt; / page up ) | previous: ( backspace / &lt;- / page down ) |
+next page: ( shift + page down ) | previous page: ( shift + page up ) |
+index: ( arrow-up )</span>
+
+<br>
+<progress id="slide-progress" value="7" max="28"></progress>
+</div>
+</body>
+</html>

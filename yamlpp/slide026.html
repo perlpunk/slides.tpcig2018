@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>YAML and Booleans</title>
+<link rel="prev" href="slide025.html" />
+<link rel="next" href="slide027.html" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bbslides.js"></script>
+<script src="js/navi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slides.css">
+<link rel="stylesheet" type="text/css" href="css/ansicolor.css">
+<link rel="stylesheet" type="text/css" href="css/yaml.css">
+</head>
+
+<body>
+<!--
+<div id="test"></div>
+-->
+<div id="bbslides-slide" class="bbslides-frame">
+<h1 id="node_1" class="bbslides-h1">YAML and Booleans</h1>
+
+<div id="node_2" class="codebox"># YAML.pm, YAML::Tiny
+$VAR1 = {
+          'bool false' => 'false',
+          'bool true' => 'true'
+        };
+</div>
+<br>
+<div id="node_5" class="codebox"># YAML::Syck
+$YAML::Syck::ImplicitTyping = 1;
+$VAR1 = {
+          'bool false' => '',
+          'bool true' => 1
+        };
+</div>
+<br>
+<div id="node_8" class="codebox"># YAML::XS
+$YAML::XS::Boolean = "JSON::PP"; # since v0.67
+$VAR1 = {
+          'bool false' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+          'bool true' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' )
+        };
+</div>
+<br>
+<div id="node_11" class="codebox"># YAML::PP
+my $ypp = YAML::PP::Loader->new(boolean => "JSON::PP");
+$VAR1 = {
+          'bool false' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+          'bool true' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' )
+        };
+</div>
+</div>
+<script type="text/javascript">
+register_animation('node_2', 5, 'flyin', {});
+register_animation('node_5', 6, 'flyin', {});
+register_animation('node_8', 7, 'flyin', {});
+register_animation('node_11', 8, 'flyin', {});
+
+var prev_page = 'slide025.html';
+var next_page = 'slide027.html';
+</script>
+<div id="bbslides-navi">
+Slide 26/28
+<a href="slide025.html" onclick="previous_step();return false">BACK</a>
+<a href="index.html">UP</a>
+<a href="slide027.html" onclick="next_step(); return false">NEXT</a>
+<span id="usage">next: ( space / -&gt; / page up ) | previous: ( backspace / &lt;- / page down ) |
+next page: ( shift + page down ) | previous page: ( shift + page up ) |
+index: ( arrow-up )</span>
+
+<br>
+<progress id="slide-progress" value="26" max="28"></progress>
+</div>
+</body>
+</html>

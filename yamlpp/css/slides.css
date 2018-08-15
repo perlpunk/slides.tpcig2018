@@ -1,0 +1,101 @@
+body {
+    font-size: 28px; font-family: Arial;
+    background-color: #eee;
+}
+
+#test {
+    position: fixed;
+    border: 1px solid red;
+    width: 1152px;
+    height: 864px;
+    top: 1px;
+    left: 1px;
+}
+#bbslides-slide {
+    height: 90%;
+}
+div.bbslides-frame {
+    width: 92%;
+/*
+    width: 1130px;
+*/
+    background-color: #fff;
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 5px 5px 2px #888888;
+    margin: auto;
+    padding: 5px;
+    overflow: hidden;
+}
+#bbslides-navi {
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-radius: 8px 8px 0px 0px;
+    box-shadow: 3px 3px 1px #888888;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0px;
+    margin: 5px auto 0px auto;
+    padding: 5px;
+    width: 97%;
+    font-size: 18px;
+}
+#slide-progress {
+    height: 5px;
+    width: 100%;
+}
+#usage {
+    font-size: 90%;
+}
+
+.codebox {
+    border: 1px solid lightgray;
+    border-radius: 1px;
+    font-family: monospace;
+    font-size: 98%;
+    white-space: pre;
+    display: inline-block;
+    margin: 3px;
+    padding: 5px;
+}
+.codeboxsmall {
+    font-size: 70%;
+}
+.small {
+    font-size: 80%;
+}
+
+.bbslides-tab {
+    background-color: #60b0ff;
+}
+.bbslides-trspace {
+    background-color: #ff6060;
+}
+.bbslides-indent {
+    background-color: #ccc;
+}
+.bbslides-comment {
+    color: #888888;
+}
+.bbslides-anchor {
+    color: green;
+}
+.bbslides-alias {
+    color: green;
+}
+h1 {
+    margin: 3px;
+}
+.bbslides-h1 {
+    text-align: center;
+}
+.bbslides-h2 {
+    text-align: center;
+}
+div.bbslides-horizontal {
+    display: inline-block;
+}
+div.bbslides-horizontal div {
+    float: left;
+}

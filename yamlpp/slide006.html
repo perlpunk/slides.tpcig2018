@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>YAML::PP Lexer</title>
+<link rel="prev" href="slide005.html" />
+<link rel="next" href="slide007.html" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bbslides.js"></script>
+<script src="js/navi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slides.css">
+<link rel="stylesheet" type="text/css" href="css/ansicolor.css">
+<link rel="stylesheet" type="text/css" href="css/yaml.css">
+</head>
+
+<body>
+<!--
+<div id="test"></div>
+-->
+<div id="bbslides-slide" class="bbslides-frame">
+<h1 id="node_1" class="bbslides-h1">YAML::PP Lexer</h1>
+<ul><li id="node_3">The Lexer turns the input into Tokens</li><li id="node_4">This is debugging output of the tokens:</li></ul>
+<div id="node_5" class="codebox"><span class="green">PLAIN                  L  1 C  1 </span><span class="blue">&quot;</span><span class="">Lorem</span><span class="blue">&quot;
+</span><span class="green">COLON                  L  1 C  6 </span><span class="blue">&quot;</span><span class="">:</span><span class="blue">&quot;
+</span><span class="green">EOL                    L  1 C  7 </span><span class="blue">&quot;</span><span class="">\n</span><span class="blue">&quot;
+</span><span class="green">INDENT                 L  2 C  1 </span><span class="blue">&quot;</span><span class="">  </span><span class="blue">&quot;
+</span><span class="green">PLAIN                  L  2 C  3 </span><span class="blue">&quot;</span><span class="">ipsum dolor</span><span class="blue">&quot;
+</span><span class="green">COLON                  L  2 C 14 </span><span class="blue">&quot;</span><span class="">:</span><span class="blue">&quot;
+</span><span class="green">EOL                    L  2 C 15 </span><span class="blue">&quot;</span><span class="">\n</span><span class="blue">&quot;
+</span><span class="green">INDENT                 L  3 C  1 </span><span class="blue">&quot;</span><span class="">    </span><span class="blue">&quot;
+</span><span class="green">DASH                   L  3 C  5 </span><span class="blue">&quot;</span><span class="">-</span><span class="blue">&quot;
+</span><span class="green">WS                     L  3 C  6 </span><span class="blue">&quot;</span><span class=""> </span><span class="blue">&quot;
+</span><span class="green">PLAIN                  L  3 C  7 </span><span class="blue">&quot;</span><span class="">sit amet, consectetur</span><span class="blue">&quot;
+</span><span class="green">EOL                    L  3 C 28 </span><span class="blue">&quot;</span><span class="">\n</span><span class="blue">&quot;
+</span><span class="green">INDENT                 L  4 C  1 </span><span class="blue">&quot;</span><span class="">    </span><span class="blue">&quot;
+</span><span class="green">DASH                   L  4 C  5 </span><span class="blue">&quot;</span><span class="">-</span><span class="blue">&quot;
+</span><span class="green">WS                     L  4 C  6 </span><span class="blue">&quot;</span><span class=""> </span><span class="blue">&quot;
+</span><span class="green">DOUBLEQUOTE            L  4 C  7 </span><span class="blue">&quot;</span><span class="">\&quot;</span><span class="blue">&quot;
+</span><span class="green">DOUBLEQUOTED           L  4 C  8 </span><span class="blue">&quot;</span><span class="">adipiscing elit,</span><span class="blue">&quot;
+</span><span class="green">DOUBLEQUOTE            L  4 C 24 </span><span class="blue">&quot;</span><span class="">\&quot;</span><span class="blue">&quot;
+</span><span class="green">EOL                    L  4 C 25 </span><span class="blue">&quot;</span><span class="">\n</span><span class="blue">&quot;
+</span><span class="">:
+</span>
+</div>
+</div>
+<script type="text/javascript">
+
+var prev_page = 'slide005.html';
+var next_page = 'slide007.html';
+</script>
+<div id="bbslides-navi">
+Slide 6/28
+<a href="slide005.html" onclick="previous_step();return false">BACK</a>
+<a href="index.html">UP</a>
+<a href="slide007.html" onclick="next_step(); return false">NEXT</a>
+<span id="usage">next: ( space / -&gt; / page up ) | previous: ( backspace / &lt;- / page down ) |
+next page: ( shift + page down ) | previous page: ( shift + page up ) |
+index: ( arrow-up )</span>
+
+<br>
+<progress id="slide-progress" value="6" max="28"></progress>
+</div>
+</body>
+</html>

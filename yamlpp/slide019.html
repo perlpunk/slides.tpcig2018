@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>Loading Roman Numbers as Integers</title>
+<link rel="prev" href="slide018.html" />
+<link rel="next" href="slide020.html" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bbslides.js"></script>
+<script src="js/navi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slides.css">
+<link rel="stylesheet" type="text/css" href="css/ansicolor.css">
+<link rel="stylesheet" type="text/css" href="css/yaml.css">
+</head>
+
+<body>
+<!--
+<div id="test"></div>
+-->
+<div id="bbslides-slide" class="bbslides-frame">
+<h1 id="node_1" class="bbslides-h1">Loading Roman Numbers as Integers</h1>
+<div id="node_2" class="codebox">use 5.010;
+use YAML::PP;
+my $yp = YAML::PP->new;
+$yp->schema->add_resolver(
+  tag => "tag:yaml.org,2002:int",
+  match => [ regex
+    => qr/^ ([IVXLCM]+) \z/x
+    => sub {
+        return {
+            I=>1,  II=>2,  III=>3,  IV=>4, V=>5,
+            VI=>6, VII=>7, VIII=>8, IX=>9, X=>10,
+        }->{ $_[0] };
+  }],
+  implicit => 1, # allow matching without tag
+);
+my $data = $yp->load_string("seven: VII");
+say $data->{seven};
+
+__END__
+7
+</div>
+</div>
+<script type="text/javascript">
+register_animation('node_2', 5, 'appear', {});
+
+var prev_page = 'slide018.html';
+var next_page = 'slide020.html';
+</script>
+<div id="bbslides-navi">
+Slide 19/28
+<a href="slide018.html" onclick="previous_step();return false">BACK</a>
+<a href="index.html">UP</a>
+<a href="slide020.html" onclick="next_step(); return false">NEXT</a>
+<span id="usage">next: ( space / -&gt; / page up ) | previous: ( backspace / &lt;- / page down ) |
+next page: ( shift + page down ) | previous page: ( shift + page up ) |
+index: ( arrow-up )</span>
+
+<br>
+<progress id="slide-progress" value="19" max="28"></progress>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>Loading Process</title>
+<link rel="prev" href="slide007.html" />
+<link rel="next" href="slide009.html" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bbslides.js"></script>
+<script src="js/navi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slides.css">
+<link rel="stylesheet" type="text/css" href="css/ansicolor.css">
+<link rel="stylesheet" type="text/css" href="css/yaml.css">
+</head>
+
+<body>
+<!--
+<div id="test"></div>
+-->
+<div id="bbslides-slide" class="bbslides-frame">
+<h1 id="node_1" class="bbslides-h1">Loading Process</h1>
+<div id="node_2" class="bbslides-horizontal"><div id="node_3" class="codebox"><span id="node_4" class="bbslides-comment"># YAML</span>
+<span id="node_5">---</span>
+<span id="node_6">key a: </span><span id="node_7">1</span>
+<span id="node_8">key b: </span>
+<span id="node_9">- item 1</span>
+<span id="node_10">- item 2</span>
+</div><div id="node_11" class="codebox">parse -&gt;</div><div id="node_12" class="codebox"><span id="node_13" class="bbslides-comment">Events</span>
+<span id="node_14">1. stream-start</span>
+<span id="node_15">2. document-start</span>
+<span id="node_16">3. mapping-start</span>
+<span id="node_17">4. scalar &#39;key a&#39;</span>
+<span id="node_18">5. scalar &#39;1&#39;</span>
+<span id="node_19">6. scalar &#39;key b&#39;</span>
+<span id="node_20">7. sequence-start</span>
+<span id="node_21">8. scalar &#39;item 1&#39;</span>
+<span id="node_22">9. scalar &#39;item 2&#39;</span>
+<span id="node_23">10. sequence-end</span>
+<span id="node_24">11. mapping-end</span>
+<span id="node_25">12. document-end</span>
+<span id="node_26">13. stream-end</span>
+</div><div id="node_27" class="codebox">construct -&gt;</div><div id="node_28" class="codebox"><span id="node_29" class="bbslides-comment"># Perl</span>
+<span id="node_30">$document = </span><span id="node_31">{
+    &#39;key a&#39; =&gt; </span><span id="node_32">1,</span>
+<span id="node_33">    &#39;key b&#39; =&gt; </span><span id="node_34">[
+        &#39;item 1&#39;,</span>
+<span id="node_35">        &#39;item 2&#39;,</span>
+<span id="node_36">    ],</span>
+<span id="node_37">}</span><span id="node_38">;</span>
+</div></div>
+</div>
+<script type="text/javascript">
+register_animation('node_5', 1, 'greyin', {});
+register_animation('node_6', 2, 'greyin', {});
+register_animation('node_7', 3, 'greyin', {});
+register_animation('node_8', 4, 'greyin', {});
+register_animation('node_9', 5, 'greyin', {});
+register_animation('node_10', 6, 'greyin', {});
+register_animation('node_15', 1, 'appear', {});
+register_animation('node_16', 2, 'appear', {});
+register_animation('node_17', 2, 'appear', {});
+register_animation('node_18', 3, 'appear', {});
+register_animation('node_19', 4, 'appear', {});
+register_animation('node_20', 5, 'appear', {});
+register_animation('node_21', 5, 'appear', {});
+register_animation('node_22', 6, 'appear', {});
+register_animation('node_23', 7, 'appear', {});
+register_animation('node_24', 8, 'appear', {});
+register_animation('node_25', 9, 'appear', {});
+register_animation('node_26', 10, 'appear', {});
+register_animation('node_30', 1, 'appear', {});
+register_animation('node_31', 2, 'appear', {});
+register_animation('node_32', 3, 'appear', {});
+register_animation('node_33', 4, 'appear', {});
+register_animation('node_34', 5, 'appear', {});
+register_animation('node_35', 6, 'appear', {});
+register_animation('node_36', 7, 'appear', {});
+register_animation('node_37', 8, 'appear', {});
+register_animation('node_38', 9, 'appear', {});
+
+var prev_page = 'slide007.html';
+var next_page = 'slide009.html';
+</script>
+<div id="bbslides-navi">
+Slide 8/28
+<a href="slide007.html" onclick="previous_step();return false">BACK</a>
+<a href="index.html">UP</a>
+<a href="slide009.html" onclick="next_step(); return false">NEXT</a>
+<span id="usage">next: ( space / -&gt; / page up ) | previous: ( backspace / &lt;- / page down ) |
+next page: ( shift + page down ) | previous page: ( shift + page up ) |
+index: ( arrow-up )</span>
+
+<br>
+<progress id="slide-progress" value="8" max="28"></progress>
+</div>
+</body>
+</html>

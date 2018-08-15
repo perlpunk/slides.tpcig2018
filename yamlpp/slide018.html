@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>Loading Timestamps as Objects</title>
+<link rel="prev" href="slide017.html" />
+<link rel="next" href="slide019.html" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bbslides.js"></script>
+<script src="js/navi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slides.css">
+<link rel="stylesheet" type="text/css" href="css/ansicolor.css">
+<link rel="stylesheet" type="text/css" href="css/yaml.css">
+</head>
+
+<body>
+<!--
+<div id="test"></div>
+-->
+<div id="bbslides-slide" class="bbslides-frame">
+<h1 id="node_1" class="bbslides-h1">Loading Timestamps as Objects</h1>
+<div id="node_2" class="codebox">use YAML::PP;
+use DateTime;
+my $yp = YAML::PP->new;
+$yp->schema->add_resolver(
+  tag => "tag:yaml.org,2002:timestamp",
+  match => [ regex => qr/
+      ^(\d{4})-(\d{2})-(\d{2})[ ]
+      (\d{2}):(\d{2}):(\d{2})\z
+      /x => sub {
+      return DateTime->new(
+        year => $_[0],   month => $_[1],
+        day => $_[2],    hour => $_[3],
+        minute => $_[4], second => $_[5],
+      );
+  }],
+  implicit => 1, # allow matching without tag
+);
+my $data = $yp->load_file($ARGV[0]);
+printf "%s\nfrom: %s\nto  : %s\n", $data->{start}->ymd,
+$data->{start}->hms, $data->{end}->hms;
+__END__
+2018-08-16
+from 10:40:00
+to   11:00:00
+</div>
+<div id="node_4" class="codebox"><span class="doc_start">---</span><span class="eol">
+</span><span class="eol"># implicit
+</span><span class="default">start</span><span class="colon">:</span><span class="default"> </span><span class="default">2018-08-16 10:40:00</span><span class="eol">
+</span><span class="eol"># explicit
+</span><span class="default">end</span><span class="colon">:</span><span class="default"> </span><span class="tag">!!timestamp</span><span class="default"> </span><span class="default">2018-08-16 11:00:00</span><span class="eol">
+</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+<script type="text/javascript">
+register_animation('node_2', 5, 'appear', {});
+register_animation('node_4', 6, 'appear', {});
+
+var prev_page = 'slide017.html';
+var next_page = 'slide019.html';
+</script>
+<div id="bbslides-navi">
+Slide 18/28
+<a href="slide017.html" onclick="previous_step();return false">BACK</a>
+<a href="index.html">UP</a>
+<a href="slide019.html" onclick="next_step(); return false">NEXT</a>
+<span id="usage">next: ( space / -&gt; / page up ) | previous: ( backspace / &lt;- / page down ) |
+next page: ( shift + page down ) | previous page: ( shift + page up ) |
+index: ( arrow-up )</span>
+
+<br>
+<progress id="slide-progress" value="18" max="28"></progress>
+</div>
+</body>
+</html>
