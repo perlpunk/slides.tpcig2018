@@ -1,3 +1,7 @@
+# bash/zsh:
+# source vc_prompt.sh
+# PS1='... `vc_prompt` \$'
+
 # thanks to ANDK
 _vc_prompt () {
     local GITDIRTY
