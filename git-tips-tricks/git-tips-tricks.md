@@ -523,11 +523,11 @@ There are also tools for viewing the log and browsing through them.
 
 #### gitk - Graphical viewer with several options and a search function
 
-  ![gitk](/git-tips-tricks/img/gitg.png)
+  ![gitk](/git-tips-tricks/img/gitk.png)
 
 #### gitg - Graphical tool which looks a bit nicer than gitk, but with less tools
 
-  ![gitk](/git-tips-tricks/img/gitk.png)
+  ![gitg](/git-tips-tricks/img/gitg.png)
 
 
 ## History of merges vs. rebase
