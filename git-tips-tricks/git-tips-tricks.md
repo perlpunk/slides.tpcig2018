@@ -1729,4 +1729,15 @@ abort a rebase. If you want to undo a successful rebase check the `reflog`
 and `git reset --hard id`.
 
 
+## My gitconfig
 
+I keep my gitconfig in a github repo:
+[gitconfig](https://github.com/perlpunk/mydotfiles/blob/master/gitconfig)
+
+This way I can include it in my local `~/.gitconfig` like this:
+
+    [include]
+      path = mydotfiles/gitconfig
+
+This allows me to use it for private and work projects, where I have
+different email addresses.
