@@ -1,3 +1,16 @@
+## My gitconfig
+
+I keep my gitconfig in a github repo:
+[gitconfig](https://github.com/perlpunk/mydotfiles/blob/master/gitconfig)
+
+This way I can include it in my local `~/.gitconfig` like this:
+
+    [include]
+      path = mydotfiles/gitconfig
+
+This allows me to use it for private and work projects, where I have
+different email addresses.
+
 # Git Tips & Tricks
 
 Git is often not very intuitive, it can be complicated, and it's easy to shoot
@@ -26,7 +39,7 @@ Let's say this is your current prompt:
 
     user@host:~/git-tips-tricks-repos%
 
-After you add this very simple function ([vc_prompt.sh](vc_prompt.sh)) it will look like this:
+After you add this very simple function ([vc-prompt.sh](vc-prompt.sh)) it will look like this:
 
     user@host:~/git-tips-tricks-repos[master]%
 
@@ -222,6 +235,39 @@ Create an alias to show a word diff:
 
     % git diffw
     Sometimes you have [-two-]{+to+} switch between two branches
+
+## Finding files
+
+You want to find files in your repo called `bug*.t`.
+
+`find` will also find files which are not part of your git repo.
+
+Create this alias:
+
+    f = "!git ls-files | grep -i"
+
+Then type:
+
+    git f 'bug*.t'
+
+## Creating a new branch and start working on it
+
+The longest way is:
+
+    git branch feature1
+    git checkout feature1
+    # or
+    git co feature1
+
+A bit shorter:
+
+    git checkout -b feature1
+    # or
+    git co -b feature1
+
+I try to avoid typing options, so I have this alias:
+
+    cob = checkout -b
 
 ## Tab Completion
 
@@ -530,13 +576,6 @@ There are also tools for viewing the log and browsing through them.
   ![gitg](/git-tips-tricks/img/gitg.png)
 
 
-## History of merges vs. rebase
-
-merge (gitk) | merge (gitg) | rebase (gitk) | rebase (gitg)
------------- | ------------- | --- | ---
-![merge (gitk)](/git-tips-tricks/img/merge-hell-gitk.png) | ![merge (gitg)](/git-tips-tricks/img/merge-hell-gitg.png) | ![rebase (gitk)](/git-tips-tricks/img/merge-heaven-gitk.png) | ![rebase (gitg)](/git-tips-tricks/img/merge-heaven-gitg.png)
-
-
 ## Removing a commit from the wrong branch
 
 Benny wants to add tests for the `factorial` function. He adds
@@ -620,13 +659,20 @@ That's it!
 If you ever make a mistake when doing `git reset`, checkout `git reflog` where
 you can find previous commits.
 
+## History of merges vs. rebase
+
+merge (gitk) | merge (gitg) | rebase (gitk) | rebase (gitg)
+------------ | ------------- | --- | ---
+![merge (gitk)](/git-tips-tricks/img/merge-hell-gitk.png) | ![merge (gitg)](/git-tips-tricks/img/merge-hell-gitg.png) | ![rebase (gitk)](/git-tips-tricks/img/merge-heaven-gitk.png) | ![rebase (gitg)](/git-tips-tricks/img/merge-heaven-gitg.png)
+
+
 ## Merge Commits
 
 There are situations when you might want to create a merge commit explicitly,
 because otherwise git would automatically do a "fast forward merge".
 
 This happens if the branch you want to merge is based on the current master
-(or the branch tou want to merge into).
+(or the branch you want to merge into).
 
 Benny wants to merge his hotfix branch.
 
@@ -1050,6 +1096,26 @@ Deleted branch test (was 518a44d).
 
 Now that's a pretty clean history.
 
+### Rebasing branches with branches
+
+Sometimes your git workflow has story branches, and from the story branches
+you create feature branches, so that people can work independently on
+features and don't have to commit to the same branch all the time.
+
+Such branches can also be rebased:
+
+    git rebase --preserve-merges
+    # or
+    git rebase --rebase-merges
+
+The first one doesn't work with `--interactive`.
+
+One important thing is that merge conflicts in the existing merge commits will
+not be rebased. You have to re-apply them manually.
+
+However, if your git flow is to rebase before merging always, you will resolve
+conflicts when doing the rebase. As a result, you won't have merge conflicts
+when you merge the rebased branch.
 
 ## Interactive rebase
 
@@ -1728,16 +1794,3 @@ With both methods you can of course run into conflicts. Remember you can always
 abort a rebase. If you want to undo a successful rebase check the `reflog`
 and `git reset --hard id`.
 
-
-## My gitconfig
-
-I keep my gitconfig in a github repo:
-[gitconfig](https://github.com/perlpunk/mydotfiles/blob/master/gitconfig)
-
-This way I can include it in my local `~/.gitconfig` like this:
-
-    [include]
-      path = mydotfiles/gitconfig
-
-This allows me to use it for private and work projects, where I have
-different email addresses.

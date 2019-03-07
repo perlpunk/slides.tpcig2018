@@ -1,9 +1,8 @@
 # bash/zsh:
 # source vc_prompt.sh
-# PS1='... `vc_prompt` \$'
+# PS1='... `vc-prompt` \$'
 
-# thanks to ANDK
-_vc_prompt () {
+vc-prompt () {
     local GITPROMPT
     local GITSTATUS
     GITSTATUS="$(git 2>/dev/null status --porcelain --untracked-files=no)"
